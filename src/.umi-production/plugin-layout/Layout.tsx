@@ -122,7 +122,7 @@ const { formatMessage } = useIntl();
         e.preventDefault();
         navigate('/');
       }}
-      formatMessage={userConfig.formatMessage || formatMessage}
+      // formatMessage={userConfig.formatMessage || formatMessage}
       menu={{ locale: userConfig.locale }}
       logo={Logo}
       menuItemRender={(menuItemProps, defaultDom) => {

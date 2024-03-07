@@ -1,7 +1,7 @@
 ﻿import type { RequestOptions } from '@@/plugin-request/request';
 import type { RequestConfig } from '@umijs/max';
 import { message, notification } from 'antd';
-
+import Cookies from 'js-cookie'
 // 错误处理方案： 错误类型
 enum ErrorShowType {
   SILENT = 0,
@@ -84,13 +84,45 @@ export const errorConfig: RequestConfig = {
       }
     },
   },
+  /**
+   * 配置request请求时的默认参数
+  //  */
+  // const request = extend({
+  //   errorHandler,
+  // });
+
+  // request.interceptors.request.use(async (url, options) => {  // 此处为拦截器，每次发送请求之前判断能否取到token
+  //   if (sessionStorage.getItem('token')) {
+  //     const headers = {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': `Token ${sessionStorage.getItem('token')}`,
+  //     };
+  //     return {
+  //       url,
+  //       options: { ...options, headers },
+  //     };
+  //   }
+  // });
+
+  // export default request;
 
   // 请求拦截器
   requestInterceptors: [
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
-      const url = config?.url?.concat('?token = 123');
-      return { ...config, url };
+      const url = config?.url?.concat();
+
+      
+      const headers = { 
+
+        ...config.headers,
+        'Authorization': Cookies.get('token_pa'),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+      // console.log('----' , headers)
+      return { ...config, url, headers };
     },
   ],
 

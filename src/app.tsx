@@ -20,10 +20,11 @@ export async function getInitialState(): Promise<{
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
-  const fetchUserInfo = async () => {
+  const fetchUserInfo = async (token) => {
     try {
       const msg = await queryCurrentUser({
-        skipErrorHandler: true,
+        // skipErrorHandler: true,
+        token
       });
       return msg.data;
     } catch (error) {
