@@ -20,8 +20,7 @@ import { FormattedMessage, history, SelectLang, useIntl, useModel, Helmet } from
 import { Alert, message, Tabs } from 'antd';
 import Settings from '../../../../config/defaultSettings';
 import React, { useState } from 'react';
-import { flushSync } from 'react-dom';
- 
+import { flushSync } from 'react-dom'; 
 
 const Lang = () => {
   const langClassName = useEmotionCss(({ token }) => {
@@ -76,7 +75,7 @@ const Login: React.FC = () => {
       backgroundSize: '100% 100%',
     };
   });
- 
+
 
   const fetchUserInfo = async (token) => {
     const userInfo = await initialState?.fetchUserInfo?.(token);
@@ -95,10 +94,9 @@ const Login: React.FC = () => {
       // 登录
       const msg = await login({ ...values, type });
 
-      
+
       if (msg.status === 'ok') {
-        
-        console.log('----msg',msg)
+ 
         const { data } = msg
 
         message.success('登录成功！');
@@ -106,12 +104,13 @@ const Login: React.FC = () => {
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
         return;
-      } 
+      } else {
+        message.error(msg.message);
+      }
       // 如果失败去设置用户错误信息  15, 2023
       setUserLoginState(msg);
     } catch (error) {
-    
-      console.log(error);
+ 
       message.error('登录失败，请重试！');
     }
   };
@@ -121,7 +120,7 @@ const Login: React.FC = () => {
     <div className={containerClassName}>
       <Helmet>
         <title>
-          
+        {/* <img alt="logo" src="/logo.png" /> */}
           登录页 - {Settings.title}
         </title>
       </Helmet>
@@ -136,7 +135,7 @@ const Login: React.FC = () => {
           contentStyle={{
             minWidth: 280,
             maxWidth: '75vw',
-          }} 
+          }}
           title="21cake 管理后台"
           subTitle={'登录页面'}
           initialValues={{
@@ -146,27 +145,21 @@ const Login: React.FC = () => {
             await handleSubmit(values as API.LoginParams);
           }}
         >
-          {/* <Tabs
+          <Tabs
             activeKey={type}
             onChange={setType}
             centered
             items={[
               {
                 key: 'account',
-                label: intl.formatMessage({
-                  id: 'pages.login.accountLogin.tab',
-                  defaultMessage: '账户密码登录',
-                }),
+                label: '账户密码登录'
               },
               {
                 key: 'mobile',
-                label: intl.formatMessage({
-                  id: 'pages.login.phoneLogin.tab',
-                  defaultMessage: '手机号登录',
-                }),
+                label: '手机号登录'
               },
             ]}
-          /> */}
+          />
 
           {status === 'error' && loginType === 'account' && (
             <LoginMessage
@@ -185,7 +178,7 @@ const Login: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: ('请输入用户名'  ),
+                    message: ('请输入用户名'),
                   },
                 ]}
               />
@@ -199,13 +192,13 @@ const Login: React.FC = () => {
                 rules={[
                   {
                     required: true,
-                    message: ( '请输入密码！' ),
+                    message: ('请输入密码！'),
                   },
                 ]}
               />
             </>
           )}
-{/* 
+
           {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />}
           {type === 'mobile' && (
             <>
@@ -215,28 +208,15 @@ const Login: React.FC = () => {
                   prefix: <MobileOutlined />,
                 }}
                 name="mobile"
-                placeholder={intl.formatMessage({
-                  id: 'pages.login.phoneNumber.placeholder',
-                  defaultMessage: '手机号',
-                })}
+                placeholder='手机号'
                 rules={[
                   {
                     required: true,
-                    message: (
-                      <FormattedMessage
-                        id="pages.login.phoneNumber.required"
-                        defaultMessage="请输入手机号！"
-                      />
-                    ),
+                    message: '请输入手机号！'
                   },
                   {
                     pattern: /^1\d{10}$/,
-                    message: (
-                      <FormattedMessage
-                        id="pages.login.phoneNumber.invalid"
-                        defaultMessage="手机号格式错误！"
-                      />
-                    ),
+                    message: '手机号格式错误！',
                   },
                 ]}
               />
@@ -248,32 +228,18 @@ const Login: React.FC = () => {
                 captchaProps={{
                   size: 'large',
                 }}
-                placeholder={intl.formatMessage({
-                  id: 'pages.login.captcha.placeholder',
-                  defaultMessage: '请输入验证码',
-                })}
+                placeholder='请输入验证码'
                 captchaTextRender={(timing, count) => {
                   if (timing) {
-                    return `${count} ${intl.formatMessage({
-                      id: 'pages.getCaptchaSecondText',
-                      defaultMessage: '获取验证码',
-                    })}`;
+                    return `${count}  获取验证码`;
                   }
-                  return intl.formatMessage({
-                    id: 'pages.login.phoneLogin.getVerificationCode',
-                    defaultMessage: '获取验证码',
-                  });
+                  return '获取验证码'
                 }}
                 name="captcha"
                 rules={[
                   {
                     required: true,
-                    message: (
-                      <FormattedMessage
-                        id="pages.login.captcha.required"
-                        defaultMessage="请输入验证码！"
-                      />
-                    ),
+                    message: '请输入验证码！',
                   },
                 ]}
                 onGetCaptcha={async (phone) => {
@@ -287,7 +253,7 @@ const Login: React.FC = () => {
                 }}
               />
             </>
-          )} */}
+          )}
           <div
             style={{
               marginBottom: 24,
@@ -305,7 +271,7 @@ const Login: React.FC = () => {
             </a> */}
           </div>
         </LoginForm>
-      </div> 
+      </div>
     </div>
   );
 };

@@ -79,17 +79,16 @@ export default (props: any) => {
   const { initialState, loading, setInitialState } = initialInfo;
   const userConfig = {
   "locale": false,
-  "navTheme": "light",
+  "navTheme": "realDark",
   "colorPrimary": "#71442A",
-  "layout": "mix",
+  "layout": "side",
   "contentWidth": "Fluid",
-  "fixedHeader": false,
+  "fixedHeader": true,
   "fixSiderbar": true,
   "colorWeak": false,
-  "title": "21CAKE",
-  "siderMenuType": "sub",
+  "title": "21cake",
   "pwa": false,
-  "logo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+  "logo": "https://oss.51cocoa.com/themes/wap/img/logo.png",
   "iconfontUrl": "",
   "token": {}
 };
