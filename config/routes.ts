@@ -24,7 +24,7 @@ export default [
   },
   {
     path: '/welcome',
-    name: 'welcome',
+    name: '首页',
     icon: 'smile',
     component: './Welcome',
   },
@@ -42,24 +42,32 @@ export default [
         path: '/admin/sub-page',
         name: 'sub-page',
         component: './admin/Admin',
-        hideChildrenInMenu:true,
-        routes:[
+        hideChildrenInMenu: true,
+        routes: [
           {
-            path:'/admin/sub-page/admindetail',
+            path: '/admin/sub-page/admindetail',
             name: 'admindetail',
-            component: './admin/AdminDeail',  
+            component: './admin/AdminDeail',
           }
         ]
       },
-    
+
     ],
   },
+  {
+    path: '/bannar',
+    name: 'bannar',
+    icon: 'picture',
+    component: './Banner/list',
+  },
+
   {
     name: 'list.table-list',
     icon: 'table',
     path: '/list',
     component: './TableList',
   },
+
   {
     path: '/',
     redirect: '/welcome',

@@ -49,8 +49,7 @@ const InfoCard: React.FC<{
             padding: '8px 16px 16px 12px',
             color: '#FFF',
             fontWeight: 'bold',
-            backgroundImage:
-              "url('https://gw.alipayobjects.com/zos/bmw-prod/daaf8d50-8e6d-4251-905d-676a24ddfa12.svg')",
+            backgroundImage: "url('https://gw.alipayobjects.com/zos/bmw-prod/daaf8d50-8e6d-4251-905d-676a24ddfa12.svg')",
           }}
         >
           {index}
@@ -108,7 +107,7 @@ const Welcome: React.FC = () => {
               "url('https://gw.alipayobjects.com/mdn/rms_a9745b/afts/img/A*BuFmQqsB2iAAAAAAAAAAAAAAARQnAQ')",
           }}
         >
-          
+
           <p
             style={{
               fontSize: '14px',
@@ -119,7 +118,7 @@ const Welcome: React.FC = () => {
               width: '65%',
             }}
           >
-             步提升企业级中后台产品设计研发过程中的『用户』和『设计者』的体验。
+            提升企业级中后台产品设计研发过程中的『用户』和『设计者』的体验。
           </p>
           <div
             style={{
@@ -130,11 +129,11 @@ const Welcome: React.FC = () => {
           >
             <InfoCard
               index={1}
-              href="https://umijs.org/docs/introduce/introduce"
+              href="/bannar"
               title="个人"
-              desc="umi 是一个可扩展的企业级前端应用框架"
+              desc=""
             />
-            <InfoCard
+            {/* <InfoCard
               index={2}
               title="营销"
               href="https://ant.design"
@@ -145,7 +144,7 @@ const Welcome: React.FC = () => {
               title="投放"
               href="https://procomponents.ant.design"
               desc=""
-            />
+            /> */}
           </div>
         </div>
       </Card>

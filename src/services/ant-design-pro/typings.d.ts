@@ -98,4 +98,7 @@ declare namespace API {
     description?: string;
     type?: NoticeIconItemType;
   };
+
+
+  
 }
