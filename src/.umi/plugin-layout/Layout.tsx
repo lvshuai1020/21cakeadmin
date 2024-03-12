@@ -79,18 +79,17 @@ export default (props: any) => {
   const { initialState, loading, setInitialState } = initialInfo;
   const userConfig = {
   "locale": false,
-  "navTheme": "realDark",
+  "navTheme": "light",
   "colorPrimary": "#71442A",
-  "layout": "side",
+  "layout": "mix",
   "contentWidth": "Fluid",
   "fixedHeader": true,
   "fixSiderbar": true,
-  "colorWeak": false,
+  "colorWeak": true,
   "title": "21cake",
   "pwa": false,
   "logo": "https://oss.51cocoa.com/themes/wap/img/logo.png",
-  "iconfontUrl": "",
-  "token": {}
+  "iconfontUrl": ""
 };
 const { formatMessage } = useIntl();
   const runtimeConfig = pluginManager.applyPlugins({

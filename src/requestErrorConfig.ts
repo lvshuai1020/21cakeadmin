@@ -111,11 +111,8 @@ export const errorConfig: RequestConfig = {
   requestInterceptors: [
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
-      const url = config?.url?.concat();
-
-      
-      const headers = { 
-
+      const url = config?.url?.concat(); 
+      const headers = {  
         ...config.headers,
         'Authorization': Cookies.get('token_pa'),
         'Content-Type': 'application/json',

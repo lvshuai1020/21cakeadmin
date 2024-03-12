@@ -9,6 +9,9 @@ export async function currentUser(options?: { [key: string]: any }) {
     params:{
       ...options
     },
+    headers: {
+      'Authorization': options?.token,
+    },
     ...(options || {}),
   });
 }

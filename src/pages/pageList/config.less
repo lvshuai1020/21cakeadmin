@@ -1,0 +1,93 @@
+ 
+
+.content{
+    display: flex;
+    justify-content: space-between;
+    position: relative; 
+    .compontent_content{
+        width: 200px; 
+    }
+    .btn_item{
+        width: calc(200px - 48px );
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        padding: 0 10px;
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+        z-index: 100;  
+        
+    }
+    .isabsoult{
+        position: absolute;
+    }
+    .app_pages{
+        width: 375px;
+        height: 812px ;
+        overflow-y: scroll;
+        overflow-x:hidden;
+        box-sizing: border-box; 
+        margin: 0;
+        padding:24px  0  0;
+        color: rgba(0, 0, 0, 0.85);
+        font-size: 14px;
+        font-variant: tabular-nums;
+        line-height: 1.5715;
+        list-style: none;
+        font-feature-settings: 'tnum', "tnum";
+        position: relative;
+        background: #fff;
+        border-radius: 2px;
+        cursor: pointer;
+        
+        .page_title{
+            text-align: center;
+            padding:  15px  0px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .config_page_item { 
+            width: 375px;  
+            height: auto;
+            position: relative;
+
+            .item_delete{
+                position: absolute;
+                top:2px;
+                right:10px;
+                z-index: 1000;
+                // width: 10px;
+                // height: 10px;
+                // border: 1px solid ;
+                // background-color: #eee;
+            }
+        }
+    }
+
+    .app_pages::-webkit-scrollbar {
+        display: none;
+      }
+    .page_data{
+        width: calc(100% - 675px);  
+    }   
+}
+
+.config_img{
+    width: 100%;
+    .img{
+        width: 100%;
+        height:  auto;
+    }
+}
+
+
+.config_banner{
+    .contentStyle{
+        height: 160px;
+        color: #fff; 
+        background: #364d79;
+    }
+}

@@ -1,6 +1,7 @@
 import { Footer } from '@/components';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
+import Cookies from 'js-cookie'
 import {
   AlipayCircleOutlined,
   LockOutlined,
@@ -20,29 +21,8 @@ import { FormattedMessage, history, SelectLang, useIntl, useModel, Helmet } from
 import { Alert, message, Tabs } from 'antd';
 import Settings from '../../../../config/defaultSettings';
 import React, { useState } from 'react';
-import { flushSync } from 'react-dom'; 
+import { flushSync } from 'react-dom';
 
-const Lang = () => {
-  const langClassName = useEmotionCss(({ token }) => {
-    return {
-      width: 42,
-      height: 42,
-      lineHeight: '42px',
-      position: 'fixed',
-      right: 16,
-      borderRadius: token.borderRadius,
-      ':hover': {
-        backgroundColor: token.colorBgTextHover,
-      },
-    };
-  });
-
-  return (
-    <div className={langClassName} data-lang>
-      {SelectLang && <SelectLang />}
-    </div>
-  );
-};
 
 const LoginMessage: React.FC<{
   content: string;
@@ -77,8 +57,8 @@ const Login: React.FC = () => {
   });
 
 
-  const fetchUserInfo = async (token) => {
-    const userInfo = await initialState?.fetchUserInfo?.(token);
+  const fetchUserInfo = async () => {
+    const userInfo = await initialState?.fetchUserInfo?.();
     if (userInfo) {
       flushSync(() => {
         setInitialState((s) => ({
@@ -93,14 +73,12 @@ const Login: React.FC = () => {
     try {
       // 登录
       const msg = await login({ ...values, type });
-
-
       if (msg.status === 'ok') {
- 
         const { data } = msg
-
         message.success('登录成功！');
-        await fetchUserInfo(data.token);
+
+        Cookies.set('token_pa', data.token, { expires: 1 })
+        await fetchUserInfo();
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
         return;
@@ -110,7 +88,7 @@ const Login: React.FC = () => {
       // 如果失败去设置用户错误信息  15, 2023
       setUserLoginState(msg);
     } catch (error) {
- 
+
       message.error('登录失败，请重试！');
     }
   };
@@ -118,11 +96,10 @@ const Login: React.FC = () => {
 
   return (
     <div className={containerClassName}>
+ 
       <Helmet>
-        <title>
-        {/* <img alt="logo" src="/logo.png" /> */}
-          登录页 - {Settings.title}
-        </title>
+       
+        <title>登录页 - {Settings.title}</title>
       </Helmet>
       {/* <Lang /> */}
       <div
@@ -136,6 +113,7 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
+          logo={<img alt="logo" src="/logo.png" />}
           title="21cake 管理后台"
           subTitle={'登录页面'}
           initialValues={{

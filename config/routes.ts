@@ -67,7 +67,29 @@ export default [
     path: '/list',
     component: './TableList',
   },
+  {
+    path: '/page',
+    name: 'page',
+    icon: 'smile',
+    // access: 'canAdmin',
+    routes: [
+      {
+        path: '/page/pagelist',
+        name: 'pagelist',
+        component: './pageList/index',
+        hideChildrenInMenu: true,
 
+      },
+      {
+        path: '/page/config',
+        name: 'config',
+        hideInMenu: true,
+        component: './pageList/config',
+      },
+
+  
+    ]
+  },
   {
     path: '/',
     redirect: '/welcome',
