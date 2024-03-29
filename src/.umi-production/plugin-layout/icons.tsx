@@ -3,5 +3,6 @@
 // DO NOT CHANGE IT MANUALLY!
 import SmileOutlined from '/Users/lvshuai/homespace/21cakeadmin/node_modules/@ant-design/icons/es/icons/SmileOutlined';
 import CrownOutlined from '/Users/lvshuai/homespace/21cakeadmin/node_modules/@ant-design/icons/es/icons/CrownOutlined';
+import PictureOutlined from '/Users/lvshuai/homespace/21cakeadmin/node_modules/@ant-design/icons/es/icons/PictureOutlined';
 import TableOutlined from '/Users/lvshuai/homespace/21cakeadmin/node_modules/@ant-design/icons/es/icons/TableOutlined';
-export default { SmileOutlined, CrownOutlined, TableOutlined };
+export default { SmileOutlined, CrownOutlined, PictureOutlined, TableOutlined };

@@ -80,17 +80,16 @@ export default (props: any) => {
   const userConfig = {
   "locale": false,
   "navTheme": "light",
-  "colorPrimary": "#1890ff",
+  "colorPrimary": "#71442A",
   "layout": "mix",
   "contentWidth": "Fluid",
-  "fixedHeader": false,
+  "fixedHeader": true,
   "fixSiderbar": true,
-  "colorWeak": false,
-  "title": "21CAKE",
+  "colorWeak": true,
+  "title": "21cake",
   "pwa": false,
-  "logo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
-  "iconfontUrl": "",
-  "token": {}
+  "logo": "https://oss.51cocoa.com/themes/wap/img/logo.png",
+  "iconfontUrl": ""
 };
 const { formatMessage } = useIntl();
   const runtimeConfig = pluginManager.applyPlugins({
@@ -122,7 +121,7 @@ const { formatMessage } = useIntl();
         e.preventDefault();
         navigate('/');
       }}
-      // formatMessage={userConfig.formatMessage || formatMessage}
+      formatMessage={userConfig.formatMessage || formatMessage}
       menu={{ locale: userConfig.locale }}
       logo={Logo}
       menuItemRender={(menuItemProps, defaultDom) => {
